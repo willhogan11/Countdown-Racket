@@ -63,6 +63,11 @@ randomSixNumbers
 (define b 25)
 (define target 125)
 
+
+; Define a list of operators
+(define ops '(+ - * /))
+
+
 ; Next Define a list of all the possibilities for those2 numbers using each of the operators [+ - * /]
 (define listOfPossibles
   (list 
@@ -75,8 +80,16 @@ randomSixNumbers
    (/ a b)
    (/ b a) ))
 
+
 ; Display the list of all possible permutations for variables 'a' and 'b'
 listOfPossibles
+
+
+; Display if the number is in the above list using the inbuilt racket function 'member',
+; that returns false if not present in the list, and displays list if it is.
+; Need to find a better way to to this, as we don;t want a list with all permutations displayed on screen should
+; the target number be in the list.....
+(member target listOfPossibles)
 
 
 
