@@ -55,3 +55,40 @@ randomSixNumbers
 
 
 
+; Now that we have our Target number, List of Available numbers and 6 random numbers picked from that list..
+; we can start to look at the actual Algorithm to be used and various permutations etc.
+
+; To start, define two arbitrary numbers and a target number 
+(define a 5)
+(define b 25)
+(define target 125)
+
+; Next Define a list of all the possibilities for those2 numbers using each of the operators [+ - * /]
+(define listOfPossibles
+  (list 
+   (+ a b)
+   (+ b a)
+   (- a b)
+   (- b a)
+   (* a b)
+   (* b a)
+   (/ a b)
+   (/ b a) ))
+
+; Display the list of all possible permutations for variables 'a' and 'b'
+listOfPossibles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
