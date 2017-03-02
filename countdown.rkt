@@ -92,19 +92,8 @@ listOfPossibles
 (member target listOfPossibles)
 
 
-
-(define (addRandNum num1 num2)
-  (if (null? num1)
-      0
-      (+ num1 num2 (random 1 100))))
-
-
-(addRandNum 10 2)
-
-
-
-
-
-
-
-
+; Display the length of the list that contains all arrangements of the random list, excluding operators,
+; 720 possible arrangements
+; (permutations randomSixNumbers)
+(display "The Length of the list with all random arrangements is: ")
+(length (permutations randomSixNumbers))

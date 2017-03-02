@@ -12,6 +12,7 @@
 
 ; Define a function ops that holds all operators 
 (define ops (list + * - /))
+(define ops1 '(+ - * /))
 
 ; Define 2 Variables
 (define a 5) 
@@ -59,6 +60,28 @@ perms
 
 
 
+; Trying various combinations.......
+(define (addRandNum num1 num2)
+  (if (null? num1)
+      0
+      (+ num1 num2 (random 1 100))))
+
+
+; (addRandNum 10 2)
 
 
 
+
+
+; WIP
+; ********************************************************************
+
+(permutations '(+ - * /))
+
+
+(define perms1
+  (permutations(cons '+ (cons '- (cons '/ (cons '*(list 5 25)))))))
+
+ perms1
+
+; ********************************************************************
