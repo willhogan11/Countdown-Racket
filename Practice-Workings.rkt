@@ -1,5 +1,6 @@
 #lang racket
 
+(define ns (make-base-namespace))
 
 ;(define perms
 ;  (permutations(cons + (cons - (cons / (cons * '(5 25)))))))

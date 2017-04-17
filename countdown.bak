@@ -91,3 +91,9 @@ listOfPossibles
    We also don't want fractions or Decimals in the output...|#
 (member target listOfPossibles)
 
+
+; Display the length of the list that contains all arrangements of the random list, excluding operators,
+; 720 possible arrangements
+; (permutations randomSixNumbers)
+(display "The Length of the list with all random arrangements is: ")
+(length (permutations randomSixNumbers))

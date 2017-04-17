@@ -80,8 +80,61 @@ perms
 
 
 (define perms1
-  (permutations(cons '+ (cons '- (cons '/ (cons '*(list 5 25)))))))
+  (cons 'a (permutations(cons '+ (cons '- (cons '/ (cons '*(list 5 25))))))))
 
  perms1
 
 ; ********************************************************************
+
+
+; ***********************************************************8
+; Next Steps 17th April 2017
+
+(define ops (list + * - /))
+
+(define targetNumber (random 101 999))
+targetNumber
+
+(define numList (list 7 9 100 9 4 25))
+
+numList
+
+(list(apply + numList))
+;(list(apply * numList))
+;(list(apply / numList))
+;(list(apply - numList))
+
+(define totalSumList
+  (list(apply * numList)
+  (list(apply + numList)
+  (list(apply / numList)
+  (list(apply - numList)
+       )))))
+
+
+totalSumList
+
+
+(apply + numList)
+
+(list(cdr numList)
+     (cddr numList)
+     (cdddr numList)
+     (cddddr numList)
+     (cdr(cddddr numList)))
+
+
+; Steps:
+; * Get each operator (car)
+; * Get the cdr, cddr, cdddr, cddddr and the cdr cddddr (above), does the sum on each part of the list
+; * Check if any of the elements in the new summed list are the targte number
+; * Get this working with manual labour first
+; * Then work on a recursive function to cut down code
+
+(list (apply (car ops) (cdr numList)))
+
+
+
+
+
+
