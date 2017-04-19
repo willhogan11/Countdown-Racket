@@ -50,13 +50,13 @@ perms
 
 
 
-(define (numList a b)
+(define (numList2 a b)
   (+ a b))
 
-(numList 5 25)
+(numList2 5 25)
 
 
-(cons (* 5 25) (numList 5 25))
+(cons (* 5 25) (numList2 5 25))
 
 
 
@@ -76,53 +76,19 @@ perms
 ; WIP
 ; ********************************************************************
 
-(permutations '(+ - * /))
+; (permutations '(+ - * /))
 
 
 (define perms1
   (cons 'a (permutations(cons '+ (cons '- (cons '/ (cons '*(list 5 25))))))))
 
- perms1
+; perms1
 
 ; ********************************************************************
 
 
 ; ***********************************************************8
 ; Next Steps 17th April 2017
-
-(define ops (list + * - /))
-
-(define targetNumber (random 101 999))
-targetNumber
-
-(define numList (list 7 9 100 9 4 25))
-
-numList
-
-(list(apply + numList))
-;(list(apply * numList))
-;(list(apply / numList))
-;(list(apply - numList))
-
-(define totalSumList
-  (list(apply * numList)
-  (list(apply + numList)
-  (list(apply / numList)
-  (list(apply - numList)
-       )))))
-
-
-totalSumList
-
-
-(apply + numList)
-
-(list(cdr numList)
-     (cddr numList)
-     (cdddr numList)
-     (cddddr numList)
-     (cdr(cddddr numList)))
-
 
 ; Steps:
 ; * Get each operator (car)
@@ -131,8 +97,34 @@ totalSumList
 ; * Get this working with manual labour first
 ; * Then work on a recursive function to cut down code
 
-(list (apply (car ops) (cdr numList)))
+; Define target number
+(define targetNumber (random 101 999))
+targetNumber
 
+; List of nums
+(define numList (list 7 9 100 9 4 25))
+
+numList
+
+
+(define addElementList
+  (list (apply (car ops) (cdr numList))
+     (apply (car ops)(cddr numList))
+     (apply (car ops)(cdddr numList))
+     (apply (car ops)(cddddr numList))
+     (apply (car ops)(cdr(cddddr numList)))))
+
+(define multiplyElementList
+  (list (apply (cadr ops) (cdr numList))
+     (apply (cadr ops)(cddr numList))
+     (apply (cadr ops)(cdddr numList))
+     (apply (cadr ops)(cddddr numList))
+     (apply (cadr ops)(cdr(cddddr numList)))))
+
+
+; Display the list of numbers form each list
+addElementList
+multiplyElementList
 
 
 

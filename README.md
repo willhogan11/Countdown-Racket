@@ -9,10 +9,13 @@
 - **Current College Year:** 4rd Year 
 - **Project Title:** Countdown Numbers Game
 
+---
+
 # Summary
 
 Countdown is a popular TV program, where a contestant is given a list of numbers and a target number. The object of the game is for the contestant to reach the target number using basic operators and any combination of the original list. I'm using the functional programming language _Racket_ to emulate the game. 
 
+---
 
 # Game Information and Rules
 
@@ -47,3 +50,15 @@ Altogether:
 ```
 (100 x 3) + (50 + 10 + 5) = 365 
 ```
+
+---
+
+# Reverse Polish Notation 
+
+---
+
+# Documented Efforts
+## Permutations
+http://onlinestatbook.com/2/probability/permutations.html
+## Combinations
+## Cartesian Product
