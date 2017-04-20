@@ -9,6 +9,9 @@
 ; Project Workings (Main racket for final code)
 
 
+(define ns (make-base-namespace))
+
+
 
 ; Define a function ops that holds all operators 
 (define ops (list + * - /))
@@ -125,6 +128,22 @@ numList
 ; Display the list of numbers form each list
 addElementList
 multiplyElementList
+
+
+
+;*****************************************************************
+
+#| Create a Function that uses a racket function called Cartesian Product 
+   that takes in a two lists and performs Cartesian Join on them.
+   In the below case, were taking each operator and adding it to another list of all possible permutations |#
+
+(define ops2 '(+ - * /))
+
+(define randomList
+  (cartesian-product ops2 (permutations '(1 2 3))))
+
+randomList
+
 
 
 
