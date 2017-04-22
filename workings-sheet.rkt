@@ -100,35 +100,35 @@ perms
 ; * Get this working with manual labour first
 ; * Then work on a recursive function to cut down code
 
-; Define target number
-(define targetNumber (random 101 999))
-
-(display "\n\nTarget Number is: \n")
-targetNumber
+(display "\n\n******************************")
 
 ; Define Random Operator function
 (define (randomOps list)
   (list-ref list (random(length list))))
 
-
 ; List of nums
+(display "\n\nList of available Numbers: \n")
 (define numList (list 7 9 100 9 4 25))
-
 numList
 
 
+; Define target number
+(define targetNumber (random 101 999))
+
+(display "\nTarget Number is: \n")
+targetNumber
+
+
+
 (define addElementList
-  (filter exact-nonnegative-integer? (list (apply (randomOps ops) (cdr numList))
-     (apply (randomOps ops)(cddr numList))
-     (apply (randomOps ops)(cdddr numList))
-     (apply (randomOps ops)(cddddr numList))
-     (apply (randomOps ops)(cdr(cddddr numList))))))
+  (filter exact-nonnegative-integer? (list (apply (randomOps ops)(cdr numList)))))
+
+
 
 
 ; Display the list of numbers from each list
 (display "\nThe Random function result\n")
 addElementList
-
 
 
 ;*****************************************************************
@@ -142,7 +142,7 @@ addElementList
 (define randomList
   (apply + (list 1 2 3)))
 
-randomList
+;randomList
 
 
 (define (randList lst)
@@ -159,7 +159,7 @@ randomList
       (+ (car l) (sum (cdr l)))))
 
 
-(sum (list 1 2 3 4 5))
+;(sum (list 1 2 3 4 5))
 
 
 

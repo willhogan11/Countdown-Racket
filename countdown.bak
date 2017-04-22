@@ -36,8 +36,9 @@ availableNums
 
 
 #| Next we define a function that appends each randomly selected number from the available list
-   of numbers, to a new list. This happens 6 six times, once for each of the numbers.NOTE: This works, however it's inefficient. My plan (time permitting) will be to try and work in a recursive algorithm that will optimise the code
-   to allow each one of the numbers to be added to the list, which will a be more programatically efficent and cut down on the repeating code. |#
+   of numbers, to a new list. This happens 6 six times, once for each of the numbers.NOTE: This works,
+   however it's inefficient. My plan (time permitting) will be to try and work in a recursive algorithm that will optimise the code
+   to allow each one of the numbers to be added to the list, which will a be more programatically efficient and cut down on the repeating code. |#
 (define randomSixNumbers
 (append (list (random-element availableNums)
               (random-element availableNums)
@@ -67,7 +68,7 @@ randomSixNumbers
 (define ops '(+ - * /))
 
 
-; Next Define a list of all the possibilities for those2 numbers using each of the operators [+ - * /]
+; Next Define a list of all the possibilities for those 2 numbers using each of the operators [+ - * /]
 (define listOfPossibles
   (list 
    (+ a b)

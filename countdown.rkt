@@ -69,16 +69,18 @@ randomSixNumbers
 
 
 ; Next Define a list of all the possibilities for those 2 numbers using each of the operators [+ - * /]
+; Remove any non negative numbers and duplicates from the result set. 
 (define listOfPossibles
-  (list 
-   (+ a b)
-   (+ b a)
-   (- a b)
-   (- b a)
-   (* a b)
-   (* b a)
-   (/ a b)
-   (/ b a) ))
+  (remove-duplicates(filter exact-nonnegative-integer?
+          (list 
+           (+ a b)
+           (+ b a)
+           (- a b)
+           (- b a)
+           (* a b)
+           (* b a)
+           (/ a b)
+           (/ b a)))))
 
 
 ; Display the list of all possible permutations for variables 'a' and 'b'
