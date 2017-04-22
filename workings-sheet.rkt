@@ -126,6 +126,7 @@ targetNumber
 
 
 
+
 ; Display the list of numbers from each list
 (display "\nThe Random function result\n")
 addElementList

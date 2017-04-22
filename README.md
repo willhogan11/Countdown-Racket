@@ -58,7 +58,34 @@ Altogether:
 ---
 
 # Documented Efforts
+Due to the challenging times i encountered during my time working on this project, i felt it was important to share my experiences and detail my findings.
+
+Here's are some of the ways i tried to solve the Countdown Game in Racket. 
+
+## Brute Force
+To begin with, i felt that trying to deal with 6 numbers was quite daunting and decided to try and solve the solution with 2 instead. 
+The way i've completed this is in it's basic brute force form, for example;
+```racket
+(define listOfPossibles
+  (remove-duplicates(filter exact-nonnegative-integer?
+          (list 
+           (+ a b)
+           (+ b a)
+           (- a b)
+           (- b a)
+           (* a b)
+           (* b a)
+           (/ a b)
+           (/ b a)))))
+```
+The ```listOfPossibilites``` mentions some outside functions, but essentially _a_ and _b_ are hard coded numbers, for example 5 and 25. The math is then completed on each section and the list of result returned. I have removed all duplicates as ```+ 5 25``` is the same as ```+ 25 5```. I also used the ```filter exact-nonnegative-integer?``` to filter outany decimal or fraction results. reference
+[racket-filter documentation](https://docs.racket-lang.org/reference/pairs.html?q=filter#%28def._%28%28lib._racket%2Fprivate%2Flist..rkt%29._filter%29%29)
+
+I then used the in-built ```member``` function, which check if the target number (in this case 125), is in the list of results. Reference [Racket member](https://docs.racket-lang.org/reference/pairs.html?q=member#%28def._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._member%29%29)
+
+
 ## Permutations
 http://onlinestatbook.com/2/probability/permutations.html
 ## Combinations
+
 ## Cartesian Product
