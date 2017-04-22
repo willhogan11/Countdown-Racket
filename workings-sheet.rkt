@@ -118,24 +118,16 @@ numList
 
 
 (define addElementList
-  (filter integer? (list (apply (randomOps ops) (cdr numList))
+  (filter exact-nonnegative-integer? (list (apply (randomOps ops) (cdr numList))
      (apply (randomOps ops)(cddr numList))
      (apply (randomOps ops)(cdddr numList))
      (apply (randomOps ops)(cddddr numList))
      (apply (randomOps ops)(cdr(cddddr numList))))))
 
-(define multiplyElementList
-  (list (apply (cadr ops) (cdr numList))
-     (apply (cadr ops)(cddr numList))
-     (apply (cadr ops)(cdddr numList))
-     (apply (cadr ops)(cddddr numList))
-     (apply (cadr ops)(cdr(cddddr numList)))))
 
-
-; Display the list of numbers form each list
-(display "The Random function result\n")
+; Display the list of numbers from each list
+(display "\nThe Random function result\n")
 addElementList
-;multiplyElementList
 
 
 
