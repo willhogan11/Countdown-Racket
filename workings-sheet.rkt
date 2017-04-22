@@ -102,7 +102,14 @@ perms
 
 ; Define target number
 (define targetNumber (random 101 999))
+
+(display "\n\nTarget Number is: \n")
 targetNumber
+
+; Define Random Operator function
+(define (randomOps list)
+  (list-ref list (random(length list))))
+
 
 ; List of nums
 (define numList (list 7 9 100 9 4 25))
@@ -111,11 +118,11 @@ numList
 
 
 (define addElementList
-  (list (apply (car ops) (cdr numList))
-     (apply (car ops)(cddr numList))
-     (apply (car ops)(cdddr numList))
-     (apply (car ops)(cddddr numList))
-     (apply (car ops)(cdr(cddddr numList)))))
+  (filter integer? (list (apply (randomOps ops) (cdr numList))
+     (apply (randomOps ops)(cddr numList))
+     (apply (randomOps ops)(cdddr numList))
+     (apply (randomOps ops)(cddddr numList))
+     (apply (randomOps ops)(cdr(cddddr numList))))))
 
 (define multiplyElementList
   (list (apply (cadr ops) (cdr numList))
@@ -126,8 +133,9 @@ numList
 
 
 ; Display the list of numbers form each list
+(display "The Random function result\n")
 addElementList
-multiplyElementList
+;multiplyElementList
 
 
 
@@ -140,10 +148,26 @@ multiplyElementList
 (define ops2 '(+ - * /))
 
 (define randomList
-  (cartesian-product ops2 (permutations '(1 2 3))))
+  (apply + (list 1 2 3)))
 
 randomList
 
+
+(define (randList lst)
+  (if (null? lst)
+      null
+      (apply + (lst))))
+
+; (randList (list 5 25))
+
+
+(define (sum l)
+  (if (null? l)
+      0
+      (+ (car l) (sum (cdr l)))))
+
+
+(sum (list 1 2 3 4 5))
 
 
 
