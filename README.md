@@ -53,7 +53,7 @@ Altogether:
 
 ---
 
-# Reverse Polish Notation 
+
 
 ---
 
@@ -149,3 +149,31 @@ I was then able to check if the _target_ number is in the _numList_ using the in
    (display "\nTarget found in the result list!")]
   [(display "\nTarget NOT found in the list!")])
 ```
+
+## Reverse Polish Notation
+Although not implemented in this project, here's a run through of some of the basics that i researched.
+The idea behind RPN is to remove the brackets associated with ordering in mathematics, such as BOMDAS (Brackets, Operators, Multiply, Divide, Add, Subtract). 
+
+Lets look at an example that one might be used to;
+
+```(3 + 5) * (7 – 2)```
+Which if going by the BOMDAS convention, would lead us to do what's in the brackets first and then the multipication. 
+This would be reduced down to;
+```
+(8) * (5)
+8 * 5 = 40
+```
+In RPN, the numbers and operators are listed one after another, and an operator always acts on the most recent numbers in the list. The numbers can be thought of as forming a stack, like a pile of plates. The most recent number goes on the top of the stack. An operator takes the appropriate number of arguments from the top of the stack and replaces them by the result of the operation.
+
+Using this convention, the above would look like the following;
+
+```3 5 + 7 2 – *```
+The RPN steps for the above are;
+* From left to Right, 3 gets pushed onto the Stack.
+* Push 5 onto the Stack (The Stack now contains 3 5, 3 is at the bottom).
+* The + operator is applied to the top two numbers and they are removed from the stack. 8 is now on the stack.
+* 7 is pushed onto the stack.
+* 2 is pushed onto the stack. The stack currently has values [8 7 2].
+* The minus operator is applied to the 7 2, they are then popped off the stack. Stack now has [8 5].
+* The final * operator is applied to the 8 and 5 which are both popped off the stack and the result, 40 is pushed back on.  
+
