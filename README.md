@@ -85,9 +85,29 @@ I then used the in-built ```member``` function, which check if the target number
 
 
 ## Permutations
-* Highlight 6! * 4 = 2880 for the perms for cartesian product multiply by 6 factorial
+The math associated with these operations in the Cartesian Product page in this wiki is as follows;
+```pseudo
+let n = 6 (Length of the list of numbers)
+let x = 4 (Number of Operators)
+n*(n-1)*(n-2)*....*(n-5) = n!
 
-http://onlinestatbook.com/2/probability/permutations.html
+Plug in the numbers into the above..
+6*(6-1)*(6-2)*(6-3)*(6-4)*(n-5) = 6!
+6! = 720
+```
+Now that we have the number of permutations for a 6 number list, we need to factor in the operators. 
+Essentially, we need to get the cartesian product from mapping every value in _n_ to every value in _x_. 
+To do this we simply say;
+```
+n! * x
+Which is 6! * 4 = 2880
+```
+As this list grows, so does the cartesian product result. 
+It's safe to say that this algorithm grows exponentially and won't be able to finish in polynomial time as the rate of the time required to complete the task, grows much faster than the list size increases. 
+
+I used the below link to help me gain a better understanding about how permutations are calculated. 
+[http://onlinestatbook.com/2/probability/permutations.html](http://onlinestatbook.com/2/probability/permutations.html)
+
 ## Combinations
 
 ## Cartesian Product
@@ -129,23 +149,3 @@ I was then able to check if the _target_ number is in the _numList_ using the in
    (display "\nTarget found in the result list!")]
   [(display "\nTarget NOT found in the list!")])
 ```
-
-The math associated with these operations is as follows;
-```pseudo
-let n = 6 (Length of the list of numbers)
-let x = 4 (Number of Operators)
-n*(n-1)*(n-2)*....*(n-5) = n!
-
-Plug in the numbers into the above..
-6*(6-1)*(6-2)*(6-3)*(6-4)*(n-5) = 6!
-6! = 720
-```
-Now that we have the number of permutations for a 6 number list, we need to factor in the operators. 
-Essentially, we need to get the cartesian product from mapping every value in _n_ to every value in _x_. 
-To do this we simply say;
-```
-n! * x
-Which is 6! * 4 = 2880
-```
-As this list grows, so does the cartesian product result. 
-It's safe to say that this algorithm grows exponentially and won't be able to finish in polynomial time as the rate of the time required to complete the task, grows much faster than the list size increases. 
