@@ -175,5 +175,40 @@ The RPN steps for the above are;
 * 7 is pushed onto the stack.
 * 2 is pushed onto the stack. The stack currently has values [8 7 2].
 * The minus operator is applied to the 7 2, they are then popped off the stack. Stack now has [8 5].
-* The final * operator is applied to the 8 and 5 which are both popped off the stack and the result, 40 is pushed back on.  
+* The final * operator is applied to the 8 and 5 which are both popped off the stack and the result, 40 is pushed back on.
 
+Reference for the above;
+[http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html](http://www-stone.ch.cam.ac.uk/documentation/rrf/rpn.html) 
+
+## Racket RPN attempt
+Here is an example that i researched for validating Reverse Polish Notation in Racket;
+```racket
+(define operator-table
+  (list (cons #\+ +) (cons #\- -) (cons #\* *) (cons #\/ /)))
+
+(define [eval-rpn tokens]
+  (define [walk remaining accum]
+    (define [not-operator? elt] [not (assoc (car elt) operator-table)])
+    (define [calc op op-a op-b]
+      (let ([int-a (chars->number op-a)] [int-b (chars->number op-b)]
+            [operator (cdr (assoc (car op) operator-table))])
+        (number->chars (operator int-a int-b))))
+
+    (if [null? remaining] (list->string (car accum))
+      (let ([first-elt (car remaining)] [rest-elts (cdr remaining)])
+        (if [not-operator? first-elt]
+          (walk rest-elts (cons first-elt accum))
+          (let ([op-a (car accum)] [op-b (cadr accum)])
+            (walk rest-elts (cons (calc first-elt op-a op-b) (cddr accum))))))))
+
+  (walk (map string->list tokens) '()))
+
+(define test-tokens-a '("2" "1" "+" "3" "*"))
+(define test-tokens-b '("4" "13" "5" "/" "+"))
+
+(eval-rpn test-tokens-a)
+(eval-rpn test-tokens-b)
+```
+Which will return the results *9* and *4* after analysing the inputs.
+
+Here's the reference [Racket RPN](https://github.com/PaprikaZ/programming-exercises/blob/master/racket/leetcode/evaluate-reverse-polish-notation.rkt)

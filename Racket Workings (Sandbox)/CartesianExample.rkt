@@ -62,11 +62,9 @@
            (map evaluate
                 (cartesian-product ops (permutations numList))))))
 
-(cartesian-product ops)
+(length(cartesian-product ops (permutations numList)))
 
-;(cartesian-product ops (permutations numList))
-
-; resultList
+resultList
 
 (cond
   [(member target resultList)
