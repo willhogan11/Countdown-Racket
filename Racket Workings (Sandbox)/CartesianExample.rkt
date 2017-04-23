@@ -4,7 +4,7 @@
 
 
 (define target 125)
-(define numList (list 5 25))
+(define numList (list 5 25 56 23 1 12))
 (define ops '(+ * - /))
 
         

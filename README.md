@@ -85,7 +85,50 @@ I then used the in-built ```member``` function, which check if the target number
 
 
 ## Permutations
+* Highlight 6! * 4 = 2880 for the perms for cartesian product multiply by 6 factorial
+
 http://onlinestatbook.com/2/probability/permutations.html
 ## Combinations
 
 ## Cartesian Product
+I used the in-built **cartesian-product** function to create an optimised version of the 2 number solution highlighted in the Brute Force section of this page.
+
+Firstly, determine which procedure you want by comparing for symbol equality.
+Since racket has first class procedures, we can just return the procedure itself
+```racket
+(define (get-procedure term)
+  (case term
+    [(+) +]
+    [(-) -]
+    [(*) *]
+    [(/) /]))
+```
+Next create a function that takes a term argument, define two other functions (procedure & arguments) to get the first and second elements, then use this with the in-built apply function
+```racket
+(define (evaluate term)
+  (define procedure (get-procedure (first term)))
+  (define arguments (second term))
+  (apply procedure arguments))
+```
+
+Then define another function that simply stores each calulated result in a list and filters out negative and fraction values. 
+The **cartesian-product** is used with each operator in the **ops** function (contains + * - /) to each permutation of a given number list (in this case _numList_). We then use **map** to complete the calculation for each casterian permutation.
+
+```racket
+(define resultList
+  (filter exact-nonnegative-integer?
+          (remove-duplicates
+           (map evaluate
+                (cartesian-product ops (permutations numList))))))
+```
+
+I was then able to check if the _target_ number is in the _numList_ using the in-built _member_ and _cond_
+```racket
+(cond
+  [(member target resultList)
+   (display "\nTarget found in the result list!")]
+  [(display "\nTarget NOT found in the list!")])
+```
+
+The math associated with these operations is as follows;
+...Document here.....

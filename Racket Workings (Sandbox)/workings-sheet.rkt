@@ -121,8 +121,12 @@ targetNumber
 
 
 (define addElementList
-  (filter exact-nonnegative-integer? (list (apply (randomOps ops)(cdr numList)))))
-
+  (filter exact-nonnegative-integer?
+          (list (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList))))))
 
 
 
