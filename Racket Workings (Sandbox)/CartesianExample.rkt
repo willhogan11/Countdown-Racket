@@ -62,9 +62,22 @@
            (map evaluate
                 (cartesian-product ops (permutations numList))))))
 
-(length (cartesian-product ops (permutations numList)))
+(cartesian-product ops)
+
+;(cartesian-product ops (permutations numList))
+
+; resultList
 
 (cond
   [(member target resultList)
    (display "Target found in the result list!")]
   [(display "Target NOT found in the list!")])
+
+
+
+;(cond
+;  [(member target resultList)
+;   (display "Target found in the result list!")]
+;  [(display "Target NOT found in the list!")])
+
+

@@ -133,6 +133,13 @@ listOfPossibles
     [(/) /]))
 
 
+(define (randomOps list)
+  (list-ref list (random(length list))))
+
+(define randOpsList randomOps)
+randOpsList
+
+
 #| Create a function that takes a term argument,
    define two other functions (procedure & arguments) to get the first and second elements
    Then use this with in-built apply function |#

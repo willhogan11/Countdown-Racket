@@ -120,20 +120,109 @@ targetNumber
 
 
 
-(define addElementList
+(define randSumElements
   (filter exact-nonnegative-integer?
           (list (apply (randomOps ops)(cdr numList))
                 (apply (randomOps ops)(cddr numList))
                 (apply (randomOps ops)(cdddr numList))
                 (apply (randomOps ops)(cddddr numList))
-                (apply (randomOps ops)(cdr(cddddr numList))))))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                (apply (randomOps ops)(cdr numList))
+                (apply (randomOps ops)(cddr numList))
+                (apply (randomOps ops)(cdddr numList))
+                (apply (randomOps ops)(cddddr numList))
+                (apply (randomOps ops)(cdr(cddddr numList)))
+                )))
+
+randSumElements
 
 
+;(define (sumList l)
+;  (if (null? l)
+;      0
+; (apply (randomOps ops)(cdr l)) (sumList (cdr l))))
 
+
+;(define (sumListTest l)
+;  (if (null? l)
+;      0
+;      (+ (car l) (sumListTest (cdr l)))))
+
+;(sumListTest '(1 2 3 4))
 
 ; Display the list of numbers from each list
 (display "\nThe Random function result\n")
-addElementList
+; addElementList
 
 
 ;*****************************************************************
