@@ -42,10 +42,6 @@
 ;*************************************************************************************
 
 
-(define (randomOps list)
-  (list-ref list (random(length list))))
-
-
 (define (get-procedure term)
   (case term
     [(+) +]
@@ -65,6 +61,8 @@
           (remove-duplicates
            (map evaluate
                 (cartesian-product ops (permutations numList))))))
+
+(length (cartesian-product ops (permutations numList)))
 
 (cond
   [(member target resultList)
