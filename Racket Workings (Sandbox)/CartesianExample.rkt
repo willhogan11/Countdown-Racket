@@ -2,7 +2,9 @@
 
 (define ns (make-base-namespace))
 
-(define numList (list 2 7 9 25 50 15))
+
+(define target 125)
+(define numList (list 5 25))
 (define ops '(+ * - /))
 
         
@@ -39,6 +41,11 @@
 
 ;*************************************************************************************
 
+
+(define (randomOps list)
+  (list-ref list (random(length list))))
+
+
 (define (get-procedure term)
   (case term
     [(+) +]
@@ -53,4 +60,13 @@
   (apply procedure arguments))
 
 
-(filter exact-nonnegative-integer?(remove-duplicates(map evaluate (cartesian-product ops (permutations numList)))))
+(define resultList
+  (filter exact-nonnegative-integer?
+          (remove-duplicates
+           (map evaluate
+                (cartesian-product ops (permutations numList))))))
+
+(cond
+  [(member target resultList)
+   (display "Target found in the result list!")]
+  [(display "Target NOT found in the list!")])

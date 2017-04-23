@@ -92,7 +92,12 @@ listOfPossibles
    Need to find a better way to to this, as we don;t want a list with all permutations displayed on screen should
    the target number be in the list.....
    We also don't want fractions or Decimals in the output...|#
-(member target listOfPossibles)
+; (member target listOfPossibles)
+
+(cond
+  [(member target listOfPossibles)
+   (display "Target found in the result list!\n")]
+  [(display "Target NOT found in the list!\n")])
 
 
 ; Display the length of the list that contains all arrangements of the random list, excluding operators,
