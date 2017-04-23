@@ -62,7 +62,8 @@
            (map evaluate
                 (cartesian-product ops (permutations numList))))))
 
-(length(cartesian-product ops (permutations numList)))
+;Displays a list containing all permutations mapped with the Cartesian Product of each operator in the list. 
+(cartesian-product ops (permutations numList))
 
 resultList
 

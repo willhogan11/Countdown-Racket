@@ -5,12 +5,6 @@
 ; Date 09-02-17
 
 
-; STEPS TO BE COMPLETED
-
-
-
-
-
 ; Create a list (define a function) consisting of the numbers from the below list
 ;[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 25, 50, 75, 100]
 (define availableNums(list 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 25 50 75 100))
@@ -19,7 +13,7 @@
 availableNums
 
 
-#| Generate a Random 3 digit Target number between 101-999 inclusive
+#| Generate a Random 3 digit Target number between 101-999 inclusive.
    The function 'targetNumber' defined below, generates a random integer between 101-999
    random is a reserved racket word and can take a single param, or two which is what i'm using here. |#
 (define targetNumber (random 101 999))
@@ -55,7 +49,10 @@ targetNumber
 randomSixNumbers
 
 
-(display "\n\n********* 2 NUMBER SOLUTION BELOW*********\n\n")
+(display "\nThe below are implementations of 2 number solutions")
+
+
+(display "\n\n\n********* 2 NUMBER SOLUTION BELOW*********\n\n")
 
 
 #| Now that we have our Target number, List of Available numbers and 6 random numbers picked from that list..
@@ -101,24 +98,21 @@ listOfPossibles
 
 
 #| The below is a better way, using a customised conditional statement
-   we can check if the number is in the list and display a meaningful message either way |#
-(cond
-  [(member target listOfPossibles)
-   (display "\nTarget found in the result list!\n")]
-  [(display "\nTarget NOT found in the list!\n")])
+   we can check if the number is in the list and display a meaningful message either way
 
+   Define a function with 2 args, t and r, where t is the target and r is the result List
+   This checks if the Target number is in the result list and displays the appropriate message |#
+(define (checkCond t r)(cond
+  [(member t r)
+   (display "\nTarget found in the result list!")]
+  [(display "\nTarget NOT found in the list!")]))
 
-; Display the length of the list that contains all arrangements of the random list, excluding operators,
-; 720 possible arrangements
-; (permutations randomSixNumbers)
-;(display "The Length of the list with all random arrangements is: ")
-;(length (permutations randomSixNumbers))
-
+(checkCond target listOfPossibles)
 
 
 
 ; The below is an optimised version of the 2 number solution using more efficient means
-(display "\n\n********* OPTIMISED 2 NUMBER SOLUTION BELOW*********\n\n")
+(display "\n\n\n********* OPTIMISED 2 NUMBER SOLUTION BELOW*********\n\n")
 
 ; Define a number list with 2 arbitrary operand values
 (define numList (list 5 25))
@@ -133,13 +127,6 @@ listOfPossibles
     [(/) /]))
 
 
-(define (randomOps list)
-  (list-ref list (random(length list))))
-
-(define randOpsList randomOps)
-randOpsList
-
-
 #| Create a function that takes a term argument,
    define two other functions (procedure & arguments) to get the first and second elements
    Then use this with in-built apply function |#
@@ -149,6 +136,8 @@ randOpsList
   (apply procedure arguments))
 
 
+#| Filter out any fractions or negative numbers
+   Remove duplicates, map each operator to each permutation of the numList|#
 (define resultList
   (filter exact-nonnegative-integer?
           (remove-duplicates
@@ -156,11 +145,56 @@ randOpsList
                 (cartesian-product ops (permutations numList))))))
 
 
+; Display the results list. calculated from the above
 (display "Refined result list of calculated possibilities\n")
 resultList
 
+; Check...
+(checkCond target resultList)
 
-(cond
-  [(member target resultList)
-   (display "\nTarget found in the result list!")]
-  [(display "\nTarget NOT found in the list!")])
+
+; The below is a Random experiment attempt version using all 6 numbers 
+(display "\n\n\n********* RANDOM 6 NUMBER ATTEMPT*********\n")
+
+
+; Define Random Operator function
+(define (randomOps list)
+  (list-ref list (random(length list))))
+
+; Define an operator List
+(define ops2 (list + * - /))
+
+
+; Display the Randomly generated target number between 101-999
+(display "\nRandom Target number between 101-999\n")
+targetNumber
+
+
+
+#| Define a Function that Applies a Randomly picked operator to do math on various parts
+   of the randomly generated list of number options (defined at the start). Using cdr, cddr, cdddr...
+   The problems with this approach are two things, firstly without proper recursion, the target number won't
+   be found efficiently as the below would need to be repeated on and on. Secondly, if the target number happens to be in
+   the list, it would be by sheer luck, as each time will produce a random number for each part.
+
+   On the plus side, the list does contain summed elements and i also
+   removed duplicates and any negative or fraction values from the result list. 
+|#
+(define randSumElements
+  (remove-duplicates(filter exact-nonnegative-integer?
+          (list (apply (randomOps ops2)(cdr randomSixNumbers))
+                (apply (randomOps ops2)(cddr randomSixNumbers))
+                (apply (randomOps ops2)(cdddr randomSixNumbers))
+                (apply (randomOps ops2)(cddddr randomSixNumbers))
+                (apply (randomOps ops2)(cdr(cddddr randomSixNumbers)))
+                (apply (randomOps ops2)(cdr randomSixNumbers))
+                (apply (randomOps ops2)(cddr randomSixNumbers))
+                (apply (randomOps ops2)(cdddr randomSixNumbers))
+                (apply (randomOps ops2)(cddddr randomSixNumbers))
+                (apply (randomOps ops2)(cdr(cddddr randomSixNumbers)))))))
+
+; Display the resultList
+randSumElements
+
+; Check if the target number is in the list
+(checkCond targetNumber randSumElements)
